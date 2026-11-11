@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hemakita - Edukasi Anemia & Siklus Menstruasi Remaja</title>
+  <meta name="description" content="Aplikasi edukasi anemia, pelacak siklus menstruasi dan masa subur, serta kuis kesehatan remaja." />
+  <meta name="theme-color" content="#e11d48" />
+  
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    h1, h2, h3, .font-display { font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif; }
+    .perspective-1000 { perspective: 1000px; }
+    .transform-style-3d { transform-style: preserve-3d; }
+    .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .rotate-y-180 { transform: rotateY(180deg); }
+  </style>
+</head>
+<body class="bg-rose-50/30 text-slate-800 antialiased selection:bg-rose-200 selection:text-rose-900 pb-20">
+
+  <!-- TOP HEADER -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-rose-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-600 to-red-500 flex items-center justify-center text-white shadow-sm">
+          <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+        <span class="text-xl font-bold font-display text-slate-900 tracking-tight">Hemakita</span>
+        <span class="text-[10px] bg-rose-100 text-rose-700 font-bold px-2 py-0.5 rounded-full ml-1">HTML Mandiri</span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-5 text-xs font-semibold text-slate-600">
+        <a href="#cycle" class="text-rose-600 hover:text-rose-700">Siklus Haid</a>
+        <a href="#simulator" class="hover:text-slate-900">Simulasi Sel</a>
+        <a href="#cards" class="hover:text-slate-900">Kartu Edukasi</a>
+        <a href="#quiz" class="hover:text-slate-900">Kuis Pintar</a>
+        <a href="#screening" class="hover:text-slate-900">Cek 5L</a>
+        <a href="#nutrition" class="hover:text-slate-900">Piring Gizi</a>
+        <a href="#game" class="hover:text-slate-900">Mini Game</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button onclick="downloadSelf()" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold rounded-lg shadow-sm flex items-center gap-1.5 cursor-pointer">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span>Unduh HTML</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="py-12 bg-gradient-to-b from-rose-50/70 via-white to-rose-50/30 border-b border-rose-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+      <div class="inline-flex items-center gap-2 text-xs font-semibold text-rose-700 mb-3 bg-rose-100/70 px-3 py-1 rounded-full">
+        <span>Pedoman Kemenkes RI · Remaja Bebas Anemia</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-display tracking-tight leading-tight">
+        Aplikasi Edukasi Anemia &amp; Siklus Menstruasi Remaja
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
+        Aplikasi lengkap dalam 1 file HTML mandiri! Cek perkiraan haid &amp; masa subur, pelajari cara kerja hemoglobin, uji wawasan di kuis gamifikasi, dan rakit piring gizi seimbang.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3 mt-6">
+        <a href="#cycle" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl shadow-sm">
+          Cek Haid &amp; Masa Subur
+        </a>
+        <a href="#cards" class="px-5 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold rounded-xl shadow-xs">
+          Buka Kartu Pintar
+        </a>
+        <a href="#quiz" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded-xl shadow-sm">
+          Mulai Kuis
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. SIKLUS MENSTRUASI & MASA SUBUR -->
+  <section id="cycle" class="py-12 bg-white border-b border-rose-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">Fitur Remaja Putri</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">Kalkulator Siklus Haid &amp; Masa Subur</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">Perkirakan jadwal haid, pantau masa subur, dan pastikan asupan zat besi saat kehilangan darah menstruasi.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+        <!-- Input -->
+        <div class="md:col-span-5 space-y-4">
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">Hari Pertama Haid Terakhir (HPHT):</label>
+            <input type="date" id="cycleDate" class="w-full p-2.5 text-xs bg-white border border-slate-200 rounded-xl" onchange="calculateCycle()" />
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+              <span>Panjang Siklus:</span>
+              <span id="cycleLengthVal" class="text-rose-600">28 Hari</span>
+            </div>
+            <input type="range" id="cycleLength" min="21" max="40" value="28" class="w-full accent-rose-600" oninput="document.getElementById('cycleLengthVal').textContent = this.value + ' Hari'; calculateCycle()" />
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+              <span>Lama Haid:</span>
+              <span id="periodDurationVal" class="text-rose-600">5 Hari</span>
+            </div>
+            <input type="range" id="periodDuration" min="3" max="10" value="5" class="w-full accent-rose-600" oninput="document.getElementById('periodDurationVal').textContent = this.value + ' Hari'; calculateCycle()" />
+          </div>
+          <button onclick="setTodayPeriod()" class="w-full py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-semibold border border-rose-200 rounded-xl transition-colors">
+            Saya Mulai Haid Hari Ini!
+          </button>
+        </div>
+
+        <!-- Output -->
+        <div class="md:col-span-7 space-y-4">
+          <div id="cyclePhaseBox" class="p-4 rounded-xl border bg-rose-50 border-rose-300 text-rose-900 space-y-2">
+            <span class="text-[11px] font-bold uppercase tracking-wider block">Status Siklus Saat Ini:</span>
+            <h4 id="cyclePhaseTitle" class="text-lg font-bold font-display">Menghitung...</h4>
+            <p id="cyclePhaseDesc" class="text-xs leading-relaxed">Pelepasan dinding rahim disertai darah haid.</p>
+            <div class="p-2.5 bg-white/90 rounded-lg text-xs text-rose-800 font-medium">
+              <strong>Anjuran TTD:</strong> <span id="cyclePhaseTTD">Minum 1 Tablet Tambah Darah setiap hari selama haid!</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="p-3 bg-white rounded-xl border border-slate-200">
+              <span class="text-slate-400 block text-[11px]">Prediksi Haid Berikutnya:</span>
+              <strong id="nextPeriodText" class="text-rose-600 text-sm font-bold block mt-0.5">-</strong>
+              <span id="countdownText" class="text-[11px] text-slate-500">-</span>
+            </div>
+            <div class="p-3 bg-white rounded-xl border border-slate-200">
+              <span class="text-slate-400 block text-[11px]">Perkiraan Masa Subur:</span>
+              <strong id="fertileText" class="text-indigo-600 text-xs font-bold block mt-0.5">-</strong>
+              <span id="ovulationText" class="text-[10px] text-slate-500">Ovulasi: -</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SIMULASI ALIRAN DARAH -->
+  <section id="simulator" class="py-12 bg-rose-50/20 border-b border-rose-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">Laboratorium Interaktif</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">Simulasi Sel Darah &amp; Hemoglobin</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">Geser kadar Hb untuk melihat aliran sel darah merah dan molekul oksigen (titik biru).</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+        <canvas id="bloodCanvas" width="600" height="200" class="w-full h-48 rounded-xl border border-rose-200 bg-rose-50 block"></canvas>
+        <div class="flex items-center justify-between text-xs font-bold">
+          <label>Kadar Hemoglobin: <span id="hbVal" class="text-rose-600 text-lg tabular-nums">13.5</span> g/dL</label>
+          <span id="hbStatusBadge" class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700">Normal Sehat</span>
+        </div>
+        <input type="range" id="hbSlider" min="7.0" max="16.0" step="0.1" value="13.5" class="w-full accent-rose-600" oninput="updateHb(this.value)" />
+        <p id="hbDesc" class="text-xs text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200">
+          Sel darah merah normositik-normokromik bulat cembung ganda merah segar. Jumlah hemoglobin cukup untuk mengangkut oksigen ke otak dan otot.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. KARTU PINTAR 3D -->
+  <section id="cards" class="py-12 bg-white border-b border-rose-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">Pengetahuan Singkat</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">Kartu Pintar 3D Anemia</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">Klik kartu untuk membalik dan membaca fakta ilmiah di baliknya!</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5" id="cardGrid"></div>
+    </div>
+  </section>
+
+  <!-- 4. KUIS EDUKASI GAMIFIKASI -->
+  <section id="quiz" class="py-12 bg-rose-50/30 border-b border-rose-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold text-amber-500 uppercase tracking-wider">Tantangan Remaja</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">Kuis Pintar Anti-5L</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">Jawab pertanyaan untuk menguji pemahaman dan kumpulkan skor!</p>
+      </div>
+
+      <div id="quizContainer" class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-5"></div>
+    </div>
+  </section>
+
+  <!-- 5. CEK SKRINING 5L -->
+  <section id="screening" class="py-12 bg-white border-b border-rose-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">Deteksi Dini</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">Skrining Mandiri Gejala 5L</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">Lemah, Letih, Lesu, Lelah, Lalai: Cek apakah kamu berisiko anemia.</p>
+      </div>
+
+      <div id="screeningBox" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4"></div>
+    </div>
+  </section>
+
+  <!-- 6. PIRING GIZI SEIMBANG -->
+  <section id="nutrition" class="py-12 bg-rose-50/20 border-b border-rose-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">Laboratorium Nutrisi</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">Piring Gizi Seimbang &amp; Iron Meter</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">Tambah makanan ke piring untuk melihat total zat besi harian dan efek booster/inhibitor.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 bg-white p-6 rounded-2xl border border-slate-200">
+        <div class="md:col-span-6 space-y-4">
+          <div class="flex items-center justify-between text-xs font-bold">
+            <span>Makanan di Piringku:</span>
+            <button onclick="clearPlate()" class="text-rose-600 hover:underline">Kosongkan</button>
+          </div>
+          <div id="plateItems" class="min-h-36 p-3 bg-rose-50/50 rounded-xl border border-dashed border-rose-200 flex flex-wrap gap-2 items-center justify-center text-xs text-slate-400">
+            Piring masih kosong.
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1.5">
+            <div class="flex justify-between font-bold">
+              <span>Total Zat Besi:</span>
+              <span id="plateIronTotal" class="text-rose-600 text-sm">0 mg / 15 mg target</span>
+            </div>
+            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+              <div id="plateIronBar" class="bg-rose-600 h-full transition-all" style="width: 0%"></div>
+            </div>
+            <div id="plateFeedback" class="text-[11px] text-slate-600 pt-1"></div>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 space-y-2">
+          <span class="text-xs font-bold text-slate-700 block">Klik Makanan untuk Ditambahkan:</span>
+          <div class="grid grid-cols-2 gap-2 text-xs" id="foodSelector"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. MINI GAME ARKADE -->
+  <section id="game" class="py-12 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <span class="text-xs font-bold text-amber-500 uppercase tracking-wider">Permainan 45 Detik</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">Ksatria Sel Darah Merah</h2>
+      <p class="text-xs sm:text-sm text-slate-600 mt-1 mb-4">Gerakkan kursor/jarimu ke atas dan bawah untuk menangkap ion Zat Besi (Fe) dan Vitamin C, hindari Teh (Tanin)!</p>
+
+      <div class="relative bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+        <div class="flex justify-between text-xs font-bold text-slate-700">
+          <span>Skor: <strong id="gameScore" class="text-rose-600">0</strong></span>
+          <span>Waktu: <strong id="gameTime">45s</strong></span>
+        </div>
+        <canvas id="gameCanvas" width="600" height="200" class="w-full h-44 rounded-xl border border-rose-200 bg-rose-50 block cursor-ns-resize"></canvas>
+        <button id="gameStartBtn" onclick="startGame()" class="px-6 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-sm">
+          Mulai Permainan
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-8 text-center text-xs space-y-2 border-t border-slate-800">
+    <p class="font-bold text-white text-sm">Hemakita - Edukasi Anemia &amp; Menstruasi Remaja Indonesia</p>
+    <p>File HTML Mandiri (Self-Contained). Bisa dibuka di Chrome, Safari iOS, Android, &amp; Laptop tanpa server.</p>
+    <p class="text-slate-600">© 2026 Hemakita. Mengacu pada Pedoman Kemenkes RI &amp; WHO.</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // WEB AUDIO SOUND EFFECTS
+    let audioCtx = null;
+    function playTone(freq, type = 'sine', duration = 0.08) {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    // 1. SIKLUS MENSTRUASI LOGIC
+    function setTodayPeriod() {
+      playTone(600);
+      const d = new Date().toISOString().split('T')[0];
+      document.getElementById('cycleDate').value = d;
+      calculateCycle();
+    }
+
+    function calculateCycle() {
+      const dateVal = document.getElementById('cycleDate').value;
+      const cycleLength = parseInt(document.getElementById('cycleLength').value);
+      const periodDuration = parseInt(document.getElementById('periodDuration').value);
+      if (!dateVal) return;
+
+      const lastDate = new Date(dateVal + 'T00:00:00');
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+      const nextPeriod = new Date(lastDate);
+      nextPeriod.setDate(lastDate.getDate() + cycleLength);
+
+      const diffDays = Math.ceil((nextPeriod - today) / (1000 * 60 * 60 * 24));
+      const diffFromLast = Math.floor((today - lastDate) / (1000 * 60 * 60 * 24)) + 1;
+
+      const ovulationDay = cycleLength - 14;
+      const ovulationDate = new Date(lastDate);
+      ovulationDate.setDate(lastDate.getDate() + (ovulationDay - 1));
+
+      const fertileStart = new Date(ovulationDate);
+      fertileStart.setDate(ovulationDate.getDate() - 4);
+      const fertileEnd = new Date(ovulationDate);
+      fertileEnd.setDate(ovulationDate.getDate() + 1);
+
+      const options = { day: 'numeric', month: 'short' };
+      document.getElementById('nextPeriodText').textContent = nextPeriod.toLocaleDateString('id-ID', options);
+      document.getElementById('countdownText').textContent = diffDays > 0 ? `Tinggal ${diffDays} hari lagi` : (diffDays === 0 ? 'Hari ini!' : `Lewat ${Math.abs(diffDays)} hari`);
+      document.getElementById('fertileText').textContent = `${fertileStart.toLocaleDateString('id-ID', options)} - ${fertileEnd.toLocaleDateString('id-ID', options)}`;
+      document.getElementById('ovulationText').textContent = `Puncak Ovulasi: ${ovulationDate.toLocaleDateString('id-ID', options)}`;
+
+      // Phase calculation
+      const box = document.getElementById('cyclePhaseBox');
+      const title = document.getElementById('cyclePhaseTitle');
+      const desc = document.getElementById('cyclePhaseDesc');
+      const ttd = document.getElementById('cyclePhaseTTD');
+
+      if (diffFromLast <= periodDuration && diffFromLast > 0) {
+        box.className = 'p-4 rounded-xl border bg-rose-50 border-rose-300 text-rose-900 space-y-2';
+        title.textContent = `Fase Menstruasi (Hari ke-${diffFromLast})`;
+        desc.textContent = 'Pelepasan dinding rahim disertai darah haid. Tubuh kehilangan 30-80 ml darah (15-40 mg zat besi)!';
+        ttd.textContent = 'PENTING: Minum 1 Tablet Tambah Darah (TTD) SETIAP HARI selama masa menstruasi.';
+      } else if (diffFromLast < ovulationDay - 4) {
+        box.className = 'p-4 rounded-xl border bg-emerald-50 border-emerald-300 text-emerald-900 space-y-2';
+        title.textContent = `Fase Folikular (Hari ke-${diffFromLast})`;
+        desc.textContent = 'Hormon estrogen naik, energi pulih. Sel telur baru sedang dipersiapkan.';
+        ttd.textContent = 'Jadwal rutin: Minum 1 Tablet Tambah Darah seminggu sekali (misal setiap Jumat).';
+      } else if (diffFromLast <= ovulationDay + 1) {
+        box.className = 'p-4 rounded-xl border bg-indigo-50 border-indigo-300 text-indigo-900 space-y-2';
+        title.textContent = `Fase Subur & Ovulasi (Hari ke-${diffFromLast})`;
+        desc.textContent = 'Sel telur matang dilepaskan. Waspadai suhu tubuh naik sedikit dan cairan serviks elastis.';
+        ttd.textContent = 'Pertahankan gizi seimbang dan cukupi kebutuhan cairan harian.';
+      } else {
+        box.className = 'p-4 rounded-xl border bg-amber-50 border-amber-300 text-amber-900 space-y-2';
+        title.textContent = `Fase Luteal / Pra-Haid (Hari ke-${diffFromLast})`;
+        desc.textContent = 'Fase menjelang haid. Mungkin muncul tanda PMS (kram ringan, jerawat, perubahan nafsu makan).';
+        ttd.textContent = 'Kurangi kopi & es teh, tidur nyenyak 7-8 jam per hari untuk meredakan kram.';
+      }
+    }
+
+    // Default 10 days ago
+    const initDate = new Date();
+    initDate.setDate(initDate.getDate() - 10);
+    document.getElementById('cycleDate').value = initDate.toISOString().split('T')[0];
+    calculateCycle();
+
+    // 2. SIMULASI DARAH CANVAS
+    const bloodCanvas = document.getElementById('bloodCanvas');
+    const bCtx = bloodCanvas.getContext('2d');
+    let currentHb = 13.5;
+    const bCells = [];
+    for (let i = 0; i < 28; i++) {
+      bCells.push({
+        x: Math.random() * 600,
+        y: 20 + Math.random() * 160,
+        speed: 1 + Math.random() * 1.5,
+        o2: Math.random() > 0.3
+      });
+    }
+
+    function updateHb(val) {
+      currentHb = parseFloat(val);
+      document.getElementById('hbVal').textContent = currentHb.toFixed(1);
+      const badge = document.getElementById('hbStatusBadge');
+      const desc = document.getElementById('hbDesc');
+
+      if (currentHb >= 12.0) {
+        badge.className = 'px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700';
+        badge.textContent = 'Normal & Prima';
+        desc.textContent = 'Sel darah merah bulat merah segar. Hemoglobin melimpah, pasokan oksigen ke otak optimal sehingga kamu fokus dan tidak mudah mengantuk.';
+      } else if (currentHb >= 10.0) {
+        badge.className = 'px-2.5 py-1 rounded-md bg-amber-50 text-amber-700';
+        badge.textContent = 'Anemia Ringan';
+        desc.textContent = 'Molekul hemoglobin berkurang. Tubuh mulai mudah lelah saat olahraga dan sering menguap di jam sekolah.';
+      } else {
+        badge.className = 'px-2.5 py-1 rounded-md bg-rose-50 text-rose-700';
+        badge.textContent = 'Anemia Sedang-Berat';
+        desc.textContent = 'Sel darah merah pucat dan mengecil (mikrositik hipokromik). Oksigen ke otak minim: sering pusing berkunang-kunang dan lemas 5L!';
+      }
+    }
+
+    function renderBlood() {
+      bCtx.clearRect(0, 0, 600, 200);
+      bCtx.fillStyle = '#fff1f2';
+      bCtx.fillRect(0, 0, 600, 200);
+
+      // Walls
+      bCtx.strokeStyle = '#f43f5e';
+      bCtx.lineWidth = 2;
+      bCtx.beginPath();
+      bCtx.moveTo(0, 2); bCtx.lineTo(600, 2);
+      bCtx.moveTo(0, 198); bCtx.lineTo(600, 198);
+      bCtx.stroke();
+
+      const r = currentHb >= 12 ? 14 : (currentHb >= 10 ? 11 : 8);
+      const color = currentHb >= 12 ? 'rgba(225, 29, 72, 0.9)' : (currentHb >= 10 ? 'rgba(244, 63, 94, 0.7)' : 'rgba(251, 113, 133, 0.5)');
+
+      bCells.forEach(c => {
+        c.x += c.speed;
+        if (c.x > 620) { c.x = -20; c.y = 20 + Math.random() * 160; }
+        bCtx.beginPath();
+        bCtx.arc(c.x, c.y, r, 0, Math.PI * 2);
+        bCtx.fillStyle = color;
+        bCtx.fill();
+
+        // O2 dot if normal
+        if (currentHb >= 10 && c.o2) {
+          bCtx.beginPath();
+          bCtx.arc(c.x - 3, c.y - 2, 2.5, 0, Math.PI * 2);
+          bCtx.fillStyle = '#38bdf8';
+          bCtx.fill();
+        }
+      });
+
+      requestAnimationFrame(renderBlood);
+    }
+    renderBlood();
+
+    // 3. FLASHCARDS
+    const cardsData = [
+      { q: "Apa itu Sindrom 5L?", a: "Lemah, Letih, Lesu, Lelah, Lalai (sulit konsentrasi). Tanda utama tubuh kekurangan oksigen akibat Hb rendah.", tip: "Cek Hb di UKS atau Puskesmas jika sering 5L." },
+      { q: "Darah Rendah = Kurang Darah?", a: "BEDA! Darah Rendah (Hipotensi) adalah tekanan pompa pembuluh. Kurang Darah (Anemia) adalah kekurangan hemoglobin (<12 g/dL).", tip: "Tensi bisa normal tapi tetap anemia." },
+      { q: "Zat Besi Heme vs Non-Heme", a: "Heme (hewani: hati, daging, telur) diserap 20-30%. Non-Heme (sayur, tempe) diserap 1-10%.", tip: "Kombinasikan lauk hewani dengan sayuran hijau." },
+      { q: "Booster Zat Besi: Vitamin C", a: "Vitamin C (jeruk, jambu biji) melipatgandakan penyerapan zat besi nabati hingga 3-4 kali lipat!", tip: "Minum air jeruk sehabis makan lauk pauk." },
+      { q: "Musuh Zat Besi: Es Teh & Kopi", a: "Zat Tanin dalam teh dan kafein mengikat zat besi sehingga 64% gagal diserap dan terbuang!", tip: "Beri jeda minimal 2 jam jika ingin minum es teh." },
+      { q: "Aturan Minum TTD Rematri", a: "1 tablet seminggu sekali sepanjang tahun, dan 1 tablet per hari saat sedang menstruasi.", tip: "Minum malam sebelum tidur agar tidak mual." }
+    ];
+
+    const cardGrid = document.getElementById('cardGrid');
+    cardsData.forEach((c, idx) => {
+      const card = document.createElement('div');
+      card.className = 'perspective-1000 h-64 cursor-pointer';
+      card.innerHTML = `
+        <div class="relative w-full h-full transition-transform duration-500 transform-style-3d rounded-2xl border border-slate-200 shadow-xs" onclick="this.classList.toggle('rotate-y-180'); playTone(450);">
+          <!-- Front -->
+          <div class="absolute inset-0 backface-hidden bg-white p-5 rounded-2xl flex flex-col justify-between">
+            <span class="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded w-max">Kartu #${idx+1}</span>
+            <h4 class="text-base font-bold text-slate-900 font-display">${c.q}</h4>
+            <span class="text-[11px] text-slate-400">Klik untuk melihat jawaban ➔</span>
+          </div>
+          <!-- Back -->
+          <div class="absolute inset-0 backface-hidden rotate-y-180 bg-rose-900 text-white p-5 rounded-2xl flex flex-col justify-between">
+            <p class="text-xs leading-relaxed text-rose-100">${c.a}</p>
+            <div class="p-2 bg-white/10 rounded-lg text-[10px] text-amber-300">
+              <strong>Tips:</strong> ${c.tip}
+            </div>
+          </div>
+        </div>
+      `;
+      cardGrid.appendChild(card);
+    });
+
+    // 4. KUIS
+    const quizData = [
+      { q: "Apa kepanjangan dari sindrom 5L gejala anemia?", opts: ["Lemah, Letih, Lesu, Lelah, Lalai", "Lapar, Lemas, Lambat, Linu, Loyo", "Lelah, Lemah, Loyo, Latah, Lesu"], ans: 0, exp: "5L adalah Lemah, Letih, Lesu, Lelah, dan Lalai (sulit konsentrasi akibat kekurangan pasokan oksigen ke otak)." },
+      { q: "Makanan apa yang mengandung zat besi Heme dengan penyerapan paling tinggi?", opts: ["Bayam rebus", "Hati ayam dan daging sapi", "Tahu dan tempe goreng"], ans: 1, exp: "Zat besi hewani (heme) diserap tubuh hingga 20-30%, jauh lebih efisien dari nabati." },
+      { q: "Mengapa sebaiknya TIDAK minum es teh manis langsung bersamaan makan daging/sayur?", opts: ["Karena bikin makanan hambar", "Tanin dalam teh mengikat zat besi sehingga gagal diserap", "Karena teh bikin darah membeku"], ans: 1, exp: "Senyawa tanin dalam teh mengikat molekul zat besi hingga lebih dari 60% terbuang percuma!" },
+      { q: "Berapa anjuran minum TTD (Tablet Tambah Darah) bagi remaja putri dari Kemenkes?", opts: ["1 tablet setiap minggu & 1 tablet/hari saat haid", "1 tablet setahun sekali", "Cukup jika sudah pingsan"], ans: 0, exp: "Rekomendasi resmi: 1 tablet seminggu sekali sepanjang tahun, dan 1 tablet per hari saat haid." }
+    ];
+    let qIdx = 0;
+    let qScore = 0;
+
+    function renderQuiz() {
+      const box = document.getElementById('quizContainer');
+      if (qIdx >= quizData.length) {
+        box.innerHTML = `
+          <div class="text-center py-6 space-y-3">
+            <span class="text-4xl">🏆</span>
+            <h3 class="text-xl font-bold font-display text-slate-900">Kuis Selesai!</h3>
+            <p class="text-sm text-slate-600">Skor Kamu: <strong class="text-rose-600 text-lg">${qScore}</strong> / ${quizData.length * 100}</p>
+            <button onclick="qIdx=0; qScore=0; renderQuiz()" class="px-5 py-2 bg-rose-600 text-white rounded-xl text-xs font-bold">Ulangi Kuis</button>
+          </div>
+        `;
+        return;
+      }
+      const q = quizData[qIdx];
+      box.innerHTML = `
+        <div class="flex justify-between text-xs text-slate-500 border-b border-slate-100 pb-2">
+          <span>Soal ${qIdx + 1} dari ${quizData.length}</span>
+          <span class="font-bold text-rose-600">Skor: ${qScore}</span>
+        </div>
+        <h4 class="text-base font-bold text-slate-900">${q.q}</h4>
+        <div class="space-y-2 pt-2">
+          ${q.opts.map((opt, i) => `
+            <button onclick="answerQuiz(${i})" class="w-full text-left p-3 rounded-xl border border-slate-200 hover:border-rose-400 hover:bg-rose-50 text-xs text-slate-700 transition-all">
+              ${String.fromCharCode(65 + i)}. ${opt}
+            </button>
+          `).join('')}
+        </div>
+      `;
+    }
+    function answerQuiz(chosen) {
+      const q = quizData[qIdx];
+      const box = document.getElementById('quizContainer');
+      const isRight = chosen === q.ans;
+      if (isRight) { qScore += 100; playTone(587); } else { playTone(220, 'sawtooth'); }
+      box.innerHTML += `
+        <div class="mt-4 p-3 rounded-xl ${isRight ? 'bg-emerald-50 text-emerald-800 border border-emerald-300' : 'bg-rose-50 text-rose-800 border border-rose-300'} text-xs">
+          <strong>${isRight ? 'Benar!' : 'Kurang Tepat.'}</strong> ${q.exp}
+          <div class="mt-2 text-right">
+            <button onclick="qIdx++; renderQuiz()" class="px-4 py-1.5 bg-slate-900 text-white rounded-lg text-xs font-semibold">Lanjut ➔</button>
+          </div>
+        </div>
+      `;
+    }
+    renderQuiz();
+
+    // 5. SKRINING 5L
+    const screenQ = [
+      "Apakah kamu sering lemas atau mengantuk di kelas meski tidur cukup?",
+      "Pernahkah merasa pusing berkunang-kunang mendadak saat berdiri?",
+      "Apakah bagian dalam kelopak mata bawahmu tampak pucat putih?",
+      "Apakah volume darah haidmu sangat deras atau sering tembus?",
+      "Apakah kamu jarang makan lauk hewani (hati/ayam/ikan/daging)?",
+      "Apakah kamu terbiasa minum es teh manis sehabis makan?"
+    ];
+    const sBox = document.getElementById('screeningBox');
+    sBox.innerHTML = screenQ.map((q, i) => `
+      <div class="flex items-center justify-between gap-3 text-xs border-b border-slate-200/60 pb-2">
+        <span class="text-slate-800">${i+1}. ${q}</span>
+        <input type="checkbox" class="screen-check w-4 h-4 accent-rose-600 rounded shrink-0" onchange="calcScreen()" />
+      </div>
+    `).join('') + `
+      <div id="screenResult" class="p-3 bg-white rounded-xl border border-slate-200 text-xs text-slate-600 mt-3">
+        Centang tanda di atas yang kamu rasakan untuk melihat estimasi risiko.
+      </div>
+    `;
+
+    function calcScreen() {
+      playTone(500);
+      const count = document.querySelectorAll('.screen-check:checked').length;
+      const res = document.getElementById('screenResult');
+      if (count <= 1) {
+        res.className = 'p-3 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-800 text-xs';
+        res.innerHTML = `<strong>Risiko Rendah (${count}/6)</strong>: Kondisimu relatif baik. Tetap minum TTD rutin seminggu sekali!`;
+      } else if (count <= 3) {
+        res.className = 'p-3 rounded-xl border border-amber-300 bg-amber-50 text-amber-800 text-xs';
+        res.innerHTML = `<strong>Risiko Sedang (${count}/6)</strong>: Waspada tanda defisiensi zat besi. Tingkatkan lauk hewani dan hindari es teh sehabis makan.`;
+      } else {
+        res.className = 'p-3 rounded-xl border border-rose-300 bg-rose-50 text-rose-800 text-xs';
+        res.innerHTML = `<strong>Risiko Tinggi (${count}/6)</strong>: Kamu mengalami banyak gejala anemia. Disarankan tes Hb tusuk jari di UKS/Puskesmas.`;
+      }
+    }
+
+    // 6. PIRING GIZI
+    const foodList = [
+      { name: "Hati Ayam (1 potong)", fe: 11.6, icon: "🍗" },
+      { name: "Daging Sapi (1 porsi)", fe: 3.5, icon: "🥩" },
+      { name: "Sayur Bayam (1 mangkuk)", fe: 3.2, icon: "🥬" },
+      { name: "Tempe Goreng (2 potong)", fe: 2.5, icon: "🧈" },
+      { name: "Jeruk Segar (Booster Vit C)", fe: 0.2, booster: true, icon: "🍊" },
+      { name: "Es Teh Manis (Inhibitor)", fe: 0, inhibitor: true, icon: "🧋" }
+    ];
+    let plate = [];
+
+    const fSel = document.getElementById('foodSelector');
+    foodList.forEach((f, idx) => {
+      const b = document.createElement('button');
+      b.className = 'p-2.5 rounded-xl border border-slate-200 hover:border-rose-400 bg-white text-left flex items-center gap-2 cursor-pointer';
+      b.innerHTML = `<span class="text-xl">${f.icon}</span> <div><strong>${f.name}</strong><br><span class="text-[10px] text-slate-500">${f.fe} mg Fe</span></div>`;
+      b.onclick = () => addFood(idx);
+      fSel.appendChild(b);
+    });
+
+    function addFood(i) {
+      playTone(550);
+      plate.push(foodList[i]);
+      renderPlate();
+    }
+    function clearPlate() {
+      plate = [];
+      renderPlate();
+    }
+    function renderPlate() {
+      const pBox = document.getElementById('plateItems');
+      if (plate.length === 0) {
+        pBox.innerHTML = 'Piring masih kosong.';
+      } else {
+        pBox.innerHTML = plate.map(p => `
+          <span class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 shadow-2xs font-bold text-xs">${p.icon} ${p.name}</span>
+        `).join('');
+      }
+
+      const totalFe = plate.reduce((s, c) => s + c.fe, 0);
+      document.getElementById('plateIronTotal').textContent = `${totalFe.toFixed(1)} mg / 15 mg`;
+      const pct = Math.min(100, Math.round((totalFe / 15) * 100));
+      document.getElementById('plateIronBar').style.width = pct + '%';
+
+      const hasBooster = plate.some(p => p.booster);
+      const hasInhibitor = plate.some(p => p.inhibitor);
+
+      let fb = '';
+      if (hasBooster) fb += '✨ <strong>Vitamin C Aktif:</strong> Penyerapan zat besi melonjak 300%! ';
+      if (hasInhibitor) fb += '⚠️ <strong>Es Teh Hadir:</strong> Tanin memangkas penyerapan hingga 64%! ';
+      document.getElementById('plateFeedback').innerHTML = fb;
+    }
+
+    // 7. MINI GAME
+    const gCanvas = document.getElementById('gameCanvas');
+    const gCtx = gCanvas.getContext('2d');
+    let gPlaying = false;
+    let gScoreVal = 0;
+    let gTimeVal = 45;
+    let gPlayerY = 100;
+    let gItems = [];
+    let gInterval = null;
+
+    gCanvas.onmousemove = (e) => {
+      const rect = gCanvas.getBoundingClientRect();
+      gPlayerY = (e.clientY - rect.top) * (200 / rect.height);
+    };
+    gCanvas.ontouchmove = (e) => {
+      if (e.touches[0]) {
+        const rect = gCanvas.getBoundingClientRect();
+        gPlayerY = (e.touches[0].clientY - rect.top) * (200 / rect.height);
+      }
+    };
+
+    function startGame() {
+      playTone(520);
+      gPlaying = true;
+      gScoreVal = 0;
+      gTimeVal = 45;
+      gItems = [];
+      document.getElementById('gameStartBtn').style.display = 'none';
+
+      if (gInterval) clearInterval(gInterval);
+      gInterval = setInterval(() => {
+        gTimeVal--;
+        document.getElementById('gameTime').textContent = gTimeVal + 's';
+        if (gTimeVal <= 0) {
+          clearInterval(gInterval);
+          gPlaying = false;
+          playTone(659);
+          document.getElementById('gameStartBtn').style.display = 'inline-block';
+          document.getElementById('gameStartBtn').textContent = 'Main Lagi (Skor: ' + gScoreVal + ')';
+        }
+      }, 1000);
+    }
+
+    function gameLoop() {
+      gCtx.clearRect(0, 0, 600, 200);
+      gCtx.fillStyle = '#fff1f2';
+      gCtx.fillRect(0, 0, 600, 200);
+
+      // Player
+      gCtx.beginPath();
+      gCtx.arc(50, gPlayerY, 15, 0, Math.PI * 2);
+      gCtx.fillStyle = '#e11d48';
+      gCtx.fill();
+      gCtx.fillStyle = '#fff';
+      gCtx.fillText('Fe', 44, gPlayerY + 3);
+
+      if (gPlaying) {
+        if (Math.random() < 0.05) {
+          const type = Math.random() < 0.6 ? 'fe' : (Math.random() < 0.8 ? 'vitc' : 'tea');
+          gItems.push({
+            x: 620,
+            y: 20 + Math.random() * 160,
+            type,
+            speed: 2 + Math.random() * 2
+          });
+        }
+
+        for (let i = gItems.length - 1; i >= 0; i--) {
+          const it = gItems[i];
+          it.x -= it.speed;
+
+          // hit test
+          if (Math.hypot(it.x - 50, it.y - gPlayerY) < 22) {
+            if (it.type === 'fe') { gScoreVal += 20; playTone(600); }
+            else if (it.type === 'vitc') { gScoreVal += 35; playTone(750); }
+            else { gScoreVal = Math.max(0, gScoreVal - 15); playTone(200, 'sawtooth'); }
+            document.getElementById('gameScore').textContent = gScoreVal;
+            gItems.splice(i, 1);
+            continue;
+          }
+
+          if (it.x < -20) { gItems.splice(i, 1); continue; }
+
+          gCtx.beginPath();
+          gCtx.arc(it.x, it.y, 10, 0, Math.PI * 2);
+          gCtx.fillStyle = it.type === 'fe' ? '#f59e0b' : (it.type === 'vitc' ? '#10b981' : '#78350f');
+          gCtx.fill();
+          gCtx.fillStyle = '#fff';
+          gCtx.font = '8px sans-serif';
+          gCtx.fillText(it.type === 'fe' ? 'Fe' : (it.type === 'vitc' ? 'C' : 'Teh'), it.x - 5, it.y + 3);
+        }
+      }
+
+      requestAnimationFrame(gameLoop);
+    }
+    gameLoop();
+
+    // DOWNLOAD SELF HTML FILE
+    function downloadSelf() {
+      playTone(600);
+      const htmlContent = document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'hemakita-anemia-remaja.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

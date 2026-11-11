@@ -1,0 +1,6 @@
+{
+  "name": "Hemakita - Edukasi Anemia Remaja",
+  "description": "Platform edukasi interaktif pencegahan anemia bagi remaja dengan kuis gamifikasi, kartu pintar 3D, simulasi sel darah merah, skrining risiko 5L, dan pelacak nutrisi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
